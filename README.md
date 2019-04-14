@@ -8,10 +8,9 @@
 
 ## Overview
 ### Description
-[App to organize budget, plan events, and set goals]
+App to organize budget, plan events, and set goals.
 
 ### App Evaluation
-[Evaluation of your app across the following attributes]
 - **Category:** Productivity/Organizer
 - **Mobile:** Does not require internet access, push notifications for reminders
 - **Story:** Planning out your month in advance, combined with keeping track with changes as you go, increases productivity
