@@ -79,4 +79,4 @@ App to organize budget, plan events, and set goals.
 ### [BONUS] Interactive Prototype
 
 ## Schema 
-<img src="schema.jpg" width=600>
+<img src="Schema.jpeg" width=600>
