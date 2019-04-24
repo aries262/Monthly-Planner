@@ -20,7 +20,7 @@ public class BudgetActivity extends AppCompatActivity {
         setContentView(R.layout.activity_budget);
         addItemButton = findViewById(R.id.addItemButton);
 
-        addItemButton.setOnClickListener(new View.OnClickListener() {
+        addItemButton.setOnClickListener(new  View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(BudgetActivity.this, BudgetAddItem.class);
