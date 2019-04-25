@@ -9,24 +9,49 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 
 public class BudgetActivity extends AppCompatActivity {
+    private final int REQUEST_CODE = 42;
     private FloatingActionButton addItemButton;
+    int total = 0;
+    private TextView tvTotal;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         Log.d("hi", "Worked");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_budget);
         addItemButton = findViewById(R.id.addItemButton);
+        tvTotal = findViewById(R.id.tvTotal);
 
         addItemButton.setOnClickListener(new  View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(BudgetActivity.this, BudgetAddItem.class);
-                startActivity(i); // brings up the second activity
+                i.putExtra("mode", 2);
+                startActivityForResult(i, REQUEST_CODE);// brings up the second activity
+
             }
+
         });
 
+
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // REQUEST_CODE is defined above
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
+            // Extract name value from result extras
+            total = data.getExtras().getInt("amount");
+            int code = data.getExtras().getInt("code", 0);
+            // Toast the name to display temporarily on screen
+            tvTotal.setText("$ " + Integer.toString(total));
+
+
+        }
     }
 }
