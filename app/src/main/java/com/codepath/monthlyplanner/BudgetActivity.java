@@ -18,7 +18,7 @@ import org.w3c.dom.Text;
 public class BudgetActivity extends AppCompatActivity {
     private final int REQUEST_CODE = 42;
     private FloatingActionButton addItemButton;
-    int total = 0;
+    double total = 0;
     private TextView tvTotal;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,10 +46,10 @@ public class BudgetActivity extends AppCompatActivity {
         // REQUEST_CODE is defined above
         if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
             // Extract name value from result extras
-            total = data.getExtras().getInt("amount");
+            total += data.getExtras().getDouble("amount");
             int code = data.getExtras().getInt("code", 0);
             // Toast the name to display temporarily on screen
-            tvTotal.setText("$ " + Integer.toString(total));
+            tvTotal.setText("$ " + Double.toString(total));
 
 
         }

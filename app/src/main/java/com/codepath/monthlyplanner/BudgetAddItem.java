@@ -35,7 +35,7 @@ public class BudgetAddItem extends AppCompatActivity {
                 Intent data = new Intent();
                 // Pass relevant data back as a result
                 data.putExtra("category", category.getText().toString());
-                data.putExtra("amount", Integer.parseInt(amount.getText().toString()));
+                data.putExtra("amount", Double.parseDouble(amount.getText().toString()));
                 data.putExtra("description", description.getText().toString());
                 data.putExtra("code", 200); // ints work too
                 // Activity finished ok, return the data
