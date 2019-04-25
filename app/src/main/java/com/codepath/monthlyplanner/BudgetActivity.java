@@ -72,7 +72,11 @@ public class BudgetActivity extends AppCompatActivity {
             // Extract name value from result extras
 
             Double amount = data.getExtras().getDouble("amount");
-            total += amount;
+            if(!(data.getExtras().getBoolean("income"))){
+                total -= amount;
+            }else{
+                total += amount;
+            }
             String description = data.getExtras().getString("description");
             String category = data.getExtras().getString("category");
             int code = data.getExtras().getInt("code", 0);
@@ -80,10 +84,13 @@ public class BudgetActivity extends AppCompatActivity {
             tvTotal.setText("$ " + Double.toString(total));
             BudgetItem item = new BudgetItem(category, description, amount);
             if(!(data.getExtras().getBoolean("income"))){
+
                 adapterExpense.add(item);
 
             }else{
+
                 adapterIncome.add(item);
+
 
             }
 
