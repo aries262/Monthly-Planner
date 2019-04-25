@@ -27,9 +27,9 @@ public class BudgetActivity extends AppCompatActivity {
     private FloatingActionButton addItemButton;
     public static double total = 0;
     private TextView tvTotal;
-    ArrayList<BudgetItem> arrayOfItems;
-    BudgetAdapter adapter;
-    ListView lvItems;
+    ArrayList<BudgetItem> arrayOfIncome, arrayOfExpenses;
+    BudgetAdapter adapterIncome, adapterExpense;
+    ListView lvIncome, lvExpenses;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         Log.d("hi", "Worked");
@@ -37,11 +37,17 @@ public class BudgetActivity extends AppCompatActivity {
         setContentView(R.layout.activity_budget);
         addItemButton = findViewById(R.id.addItemButton);
         tvTotal = findViewById(R.id.tvTotal);
-        arrayOfItems = new ArrayList<BudgetItem>();
-        adapter = new BudgetAdapter(this, arrayOfItems);
-        lvItems = (ListView) findViewById(R.id.lvBudget);
+        arrayOfIncome = new ArrayList<BudgetItem>();
+        adapterIncome = new BudgetAdapter(this, arrayOfIncome);
+        lvIncome = (ListView) findViewById(R.id.lvIncome);
 
-        lvItems.setAdapter(adapter);
+        lvIncome.setAdapter(adapterIncome);
+
+        arrayOfExpenses = new ArrayList<BudgetItem>();
+        adapterExpense = new BudgetAdapter(this, arrayOfExpenses);
+        lvExpenses = (ListView) findViewById(R.id.lvExpense);
+
+        lvExpenses.setAdapter(adapterExpense);
 
 
 
@@ -64,6 +70,7 @@ public class BudgetActivity extends AppCompatActivity {
         // REQUEST_CODE is defined above
         if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
             // Extract name value from result extras
+
             Double amount = data.getExtras().getDouble("amount");
             total += amount;
             String description = data.getExtras().getString("description");
@@ -71,9 +78,14 @@ public class BudgetActivity extends AppCompatActivity {
             int code = data.getExtras().getInt("code", 0);
             // Toast the name to display temporarily on screen
             tvTotal.setText("$ " + Double.toString(total));
-
             BudgetItem item = new BudgetItem(category, description, amount);
-            adapter.add(item);
+            if(!(data.getExtras().getBoolean("income"))){
+                adapterExpense.add(item);
+
+            }else{
+                adapterIncome.add(item);
+
+            }
 
 
 

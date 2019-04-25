@@ -24,7 +24,7 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/lvBudget"></ListView>
+        android:id="@+id/lvIncome"></ListView>
 
     <TextView
         android:id="@+id/expense"
@@ -32,6 +32,10 @@
         android:layout_height="61dp"
         android:text="Expenses"
         android:textSize="36dp" />
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lvExpense"></ListView>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addItemButton"

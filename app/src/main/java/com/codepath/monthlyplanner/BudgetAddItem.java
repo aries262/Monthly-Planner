@@ -27,13 +27,17 @@ public class BudgetAddItem extends AppCompatActivity {
         description = findViewById(R.id.etDescription);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
-
+            Boolean income = false;
             @Override
             public void onClick(View v) {
 
                 // Prepare data intent
                 Intent data = new Intent();
                 // Pass relevant data back as a result
+                if (rbIncome.isChecked()){
+                    income = true;
+                }
+                data.putExtra("income", income);
                 data.putExtra("category", category.getText().toString());
                 data.putExtra("amount", Double.parseDouble(amount.getText().toString()));
                 data.putExtra("description", description.getText().toString());
