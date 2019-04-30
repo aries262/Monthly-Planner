@@ -28,10 +28,10 @@ App to organize budget, plan events, and set goals.
 
 **Required Must-have Stories**
 
-* User can add and delete events from Calendar
-* User can add and delete income and expenses from Budget
-* User can select day on Calendar to see schedule
-* User can see a list of income and expenses with amount of money remaining
+- [ ]  User can add and delete events from Calendar
+- [X] User can add and delete income and expenses from Budget
+- [ ] User can select day on Calendar to see schedule
+- [X] User can see a list of income and expenses with amount of money remaining
 
 **Optional Nice-to-have Stories**
 
@@ -80,3 +80,9 @@ App to organize budget, plan events, and set goals.
 
 ## Schema 
 <img src="Schema.jpeg" width=600>
+
+## Update 1
+<img src='walkthrough1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
+
