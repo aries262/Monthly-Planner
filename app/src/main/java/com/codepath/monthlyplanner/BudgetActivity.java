@@ -16,8 +16,11 @@ import android.widget.Toast;
 
 import com.codepath.monthlyplanner.Models.BudgetItem;
 
+import org.apache.commons.io.FileUtils;
 import org.w3c.dom.Text;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +30,9 @@ public class BudgetActivity extends AppCompatActivity {
     private FloatingActionButton addItemButton;
     public static double total = 0;
     private TextView tvTotal;
+    private TextView tvAmount;
     ArrayList<BudgetItem> arrayOfIncome, arrayOfExpenses;
+    ArrayList<String> items;
     BudgetAdapter adapterIncome, adapterExpense;
     ListView lvIncome, lvExpenses;
     @Override
@@ -37,6 +42,7 @@ public class BudgetActivity extends AppCompatActivity {
         setContentView(R.layout.activity_budget);
         addItemButton = findViewById(R.id.addItemButton);
         tvTotal = findViewById(R.id.tvTotal);
+        tvAmount = findViewById(R.id.tvAmount);
         arrayOfIncome = new ArrayList<BudgetItem>();
         adapterIncome = new BudgetAdapter(this, arrayOfIncome);
         lvIncome = (ListView) findViewById(R.id.lvIncome);
@@ -86,6 +92,7 @@ public class BudgetActivity extends AppCompatActivity {
             if(!(data.getExtras().getBoolean("income"))){
 
                 adapterExpense.add(item);
+//                tvAmount.setTextColor(this.getResources().getColor(R.color.green));
 
             }else{
 
@@ -93,11 +100,15 @@ public class BudgetActivity extends AppCompatActivity {
 
 
             }
-
-
-
-
+            if(total >= 0){
+                tvTotal.setTextColor(this.getResources().getColor(R.color.colorPrimary));
+            }else{
+                tvTotal.setTextColor(this.getResources().getColor(R.color.red));
+            }
         }
+
+
     }
+
 
 }

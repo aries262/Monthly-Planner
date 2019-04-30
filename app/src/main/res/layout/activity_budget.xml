@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:text="$ 0.00"
         android:textAlignment="center"
-        android:textSize="50dp" />
+        android:textSize="50dp"
+        />
 
     <TextView
         android:id="@+id/income"
