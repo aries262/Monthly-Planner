@@ -23,4 +23,12 @@
         tools:layout_editor_absoluteX="78dp"
         tools:layout_editor_absoluteY="44dp" />
 
+    <Button
+        android:id="@+id/goToCalendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calendar"
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="288dp" />
+
 </android.support.constraint.ConstraintLayout>
