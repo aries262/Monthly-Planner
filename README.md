@@ -82,7 +82,7 @@ App to organize budget, plan events, and set goals.
 <img src="Schema.jpeg" width=600>
 
 ## Update 1
-<img src='walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='walkthrough1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
