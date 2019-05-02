@@ -54,7 +54,7 @@
                 android:layout_below="@id/etCategory"
                 android:layout_toRightOf="@id/tvAmount"
                 android:ems="10"
-                android:inputType="numberDecimal" />
+              />
         </TableRow>
 
         <TableRow>

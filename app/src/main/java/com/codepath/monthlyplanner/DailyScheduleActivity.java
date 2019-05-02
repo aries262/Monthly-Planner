@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.codepath.monthlyplanner.Models.CalendarItem;
 
@@ -17,28 +19,22 @@ import java.util.ArrayList;
 import static com.codepath.monthlyplanner.R.layout.activity_daily_schedule;
 
 public class DailyScheduleActivity extends AppCompatActivity {
-    private EditText etEvent;
-    private EditText etDescription;
-    private EditText etTime;
-    private EditText etLocation;
-    private EditText etReminder;
+    private final int REQUEST_CODE = 28;
     private Button btnAddEvent;
 
+    ArrayList<CalendarItem> arrayOfEvents = new ArrayList<CalendarItem>();
+    // Create the adapter to convert the array to views
+    CalendarAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(activity_daily_schedule);
-        etEvent = findViewById(R.id.etEvent);
-        etDescription = findViewById(R.id.etDescription);
-        etTime = findViewById(R.id.etTime);
-        etLocation = findViewById(R.id.etLocation);
-        etReminder = findViewById(R.id.etReminder);
+        adapter = new CalendarAdapter(this, arrayOfEvents);
         btnAddEvent = findViewById(R.id.btnAddEvent);
 
+
         // Construct the data source
-        ArrayList<CalendarItem> arrayOfUsers = new ArrayList<CalendarItem>();
-        // Create the adapter to convert the array to views
-        CalendarAdapter adapter = new CalendarAdapter(this, arrayOfUsers);
+
         // Attach the adapter to a ListView
         ListView listView = (ListView) findViewById(R.id.lvSchedule);
         listView.setAdapter(adapter);
@@ -49,16 +45,23 @@ public class DailyScheduleActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-//        // Add item to adapter
-//           CalendarItem newItem = new CalendarItem(etEvent, etDescription, etTime, etLocation, etReminder);
-//           adapter.add(newItem);
-//        // Or even append an entire new collection
-//        // Fetching some data, data has now returned
-//        // If data was JSON, convert to ArrayList of User objects.
-//        JSONArray jsonArray = ...;
-//        ArrayList<CalendarItem> newUsers = CalendarItem.fromJson(jsonArray)
-//        adapter.addAll(newUsers);
       }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // REQUEST_CODE is defined above
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
+            // Extract name value from result extras
+            String name = data.getExtras().getString("name");
+            int code = data.getExtras().getInt("code", 0);
+            // Toast the name to display temporarily on screen
+            String event = data.getExtras().getString("event");
+            String description = data.getExtras().getString("description");
+            String time = data.getExtras().getString("time");
+            String location = data.getExtras().getString("location");
+            String reminder = data.getExtras().getString("reminder");
 
+            CalendarItem item = new CalendarItem(event, description, time, location, reminder );
+            adapter.add(item);
+        }
+    }
 }
