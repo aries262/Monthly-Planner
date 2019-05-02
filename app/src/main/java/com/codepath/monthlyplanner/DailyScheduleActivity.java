@@ -14,6 +14,8 @@ import org.json.JSONArray;
 
 import java.util.ArrayList;
 
+import static com.codepath.monthlyplanner.R.layout.activity_daily_schedule;
+
 public class DailyScheduleActivity extends AppCompatActivity {
     private EditText etEvent;
     private EditText etDescription;
@@ -25,7 +27,7 @@ public class DailyScheduleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_daily_schedule);
+        setContentView(activity_daily_schedule);
         etEvent = findViewById(R.id.etEvent);
         etDescription = findViewById(R.id.etDescription);
         etTime = findViewById(R.id.etTime);
