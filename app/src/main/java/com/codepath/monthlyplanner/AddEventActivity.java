@@ -34,6 +34,7 @@ public class AddEventActivity extends AppCompatActivity {
                 data.putExtra("Time", etTime.getText().toString());
                 data.putExtra("location", etLocation.getText().toString());
                 data.putExtra("Reminder", etReminder.getText().toString());
+                data.putExtra("code", 200);
                 //Activity finsihed ok, return the data.
                 setResult(RESULT_OK, data); //Set result code and bundle data for response.
                 finish(); //closes the activity, pass data to parent.
@@ -43,13 +44,13 @@ public class AddEventActivity extends AppCompatActivity {
 
 
 
-    private final int REQUEST_CODE = 20;
-    // FirstActivity, launching an activity for a result
-    public void onClick(View view) {
-        Intent i = new Intent(AddEventActivity.this, DailyScheduleActivity.class);
-        i.putExtra("mode", 2); // pass arbitrary data to launched activity
-        startActivityForResult(i, REQUEST_CODE);
-    }
+//    private final int REQUEST_CODE = 20;
+//    // FirstActivity, launching an activity for a result
+//    public void onClick(View view) {
+//        Intent i = new Intent(AddEventActivity.this, DailyScheduleActivity.class);
+//        i.putExtra("mode", 2); // pass arbitrary data to launched activity
+//        startActivityForResult(i, REQUEST_CODE);
+//    }
 
 
 }

@@ -1,6 +1,7 @@
 package com.codepath.monthlyplanner;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ public class CalendarAdapter extends ArrayAdapter<CalendarItem> {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
+            Log.d("works", "adapter");
             // Get the data item for this position
             CalendarItem item = getItem(position);
             // Check if an existing view is being reused, otherwise inflate the view

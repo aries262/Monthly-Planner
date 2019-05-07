@@ -92,7 +92,6 @@ public class BudgetActivity extends AppCompatActivity {
             if(!(data.getExtras().getBoolean("income"))){
 
                 adapterExpense.add(item);
-//                tvAmount.setTextColor(this.getResources().getColor(R.color.green));
 
             }else{
 
