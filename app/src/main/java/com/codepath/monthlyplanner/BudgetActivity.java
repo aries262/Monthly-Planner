@@ -24,8 +24,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.realm.Realm;
+
 
 public class BudgetActivity extends AppCompatActivity {
+    private Realm myRealm;
     private final int REQUEST_CODE = 42;
     private FloatingActionButton addItemButton;
     public static double total = 0;
@@ -40,6 +43,7 @@ public class BudgetActivity extends AppCompatActivity {
         Log.d("hi", "Worked");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_budget);
+        myRealm = Realm.getDefaultInstance();
         addItemButton = findViewById(R.id.addItemButton);
         tvTotal = findViewById(R.id.tvTotal);
         tvAmount = findViewById(R.id.tvAmount);

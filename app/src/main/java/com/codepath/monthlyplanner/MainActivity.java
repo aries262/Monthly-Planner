@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+
 public class MainActivity extends AppCompatActivity {
     private Button goTo;
     private Button calendar;
@@ -14,6 +17,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Set up Realm Database
+        Realm.init(this);
+        RealmConfiguration configuration = new RealmConfiguration.Builder()
+                .name("Monthly-Planner")
+                .build();
+        Realm.setDefaultConfiguration(configuration);
+
         goTo = findViewById(R.id.goTo);
         calendar = findViewById(R.id.goToCalendar);
 

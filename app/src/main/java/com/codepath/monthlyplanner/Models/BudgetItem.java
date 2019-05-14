@@ -2,10 +2,14 @@ package com.codepath.monthlyplanner.Models;
 
 import java.util.ArrayList;
 
-public class BudgetItem {
+import io.realm.Realm;
+import io.realm.RealmObject;
+
+public class BudgetItem extends RealmObject {
     public String category;
     public String description;
     public Double amount;
+
 
     public BudgetItem(String category, String description, Double amount) {
         this.category = category;

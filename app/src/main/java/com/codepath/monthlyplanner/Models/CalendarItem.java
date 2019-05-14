@@ -2,7 +2,9 @@ package com.codepath.monthlyplanner.Models;
 
 import java.util.ArrayList;
 
-public class CalendarItem {
+import io.realm.RealmObject;
+
+public class CalendarItem extends RealmObject {
     public String event;
     public String description;
     public String time;
