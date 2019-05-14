@@ -6,10 +6,12 @@ import io.realm.Realm;
 import io.realm.RealmObject;
 
 public class BudgetItem extends RealmObject {
-    public String category;
+    private String category;
     public String description;
     public Double amount;
 
+    public BudgetItem() {
+    }
 
     public BudgetItem(String category, String description, Double amount) {
         this.category = category;
@@ -18,17 +20,17 @@ public class BudgetItem extends RealmObject {
     }
 
 
-    public String getCategory(){
-        return category;
+    public String getCategory(String category){
+        return this.category;
     }
 
 
-    public String getDescription(){
-        return description;
+    public String getDescription(String description){
+        return this.description;
     }
 
-    public Double getAmount(){
-        return amount;
+    public Double getAmount(Double amount){
+        return this.amount;
     }
 
     public static ArrayList<BudgetItem> getItems() {

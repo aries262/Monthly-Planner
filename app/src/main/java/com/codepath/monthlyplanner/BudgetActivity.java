@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
+import io.realm.RealmResults;
 
 
 public class BudgetActivity extends AppCompatActivity {
@@ -43,7 +44,19 @@ public class BudgetActivity extends AppCompatActivity {
         Log.d("hi", "Worked");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_budget);
+
+
         myRealm = Realm.getDefaultInstance();
+//        RealmResults<BudgetItem> budgetList = myRealm.where(BudgetItem.class).findAll();
+//        StringBuilder builder = new StringBuilder();
+//
+//        for (BudgetItem item: budgetList){
+//            builder.append("Description: ").append(item.getDescription());
+//        }
+
+
+
+
         addItemButton = findViewById(R.id.addItemButton);
         tvTotal = findViewById(R.id.tvTotal);
         tvAmount = findViewById(R.id.tvAmount);
@@ -81,14 +94,14 @@ public class BudgetActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
             // Extract name value from result extras
 
-            Double amount = data.getExtras().getDouble("amount");
+            final Double amount = data.getExtras().getDouble("amount");
             if(!(data.getExtras().getBoolean("income"))){
                 total -= amount;
             }else{
                 total += amount;
             }
-            String description = data.getExtras().getString("description");
-            String category = data.getExtras().getString("category");
+            final String description = data.getExtras().getString("description");
+            final String category = data.getExtras().getString("category");
             int code = data.getExtras().getInt("code", 0);
             // Toast the name to display temporarily on screen
             tvTotal.setText("$ " + Double.toString(total));
@@ -108,6 +121,16 @@ public class BudgetActivity extends AppCompatActivity {
             }else{
                 tvTotal.setTextColor(this.getResources().getColor(R.color.red));
             }
+            myRealm.executeTransaction(new Realm.Transaction() {
+                @Override
+                public void execute(Realm realm) {
+                    BudgetItem budgetItem = myRealm.createObject(BudgetItem.class);
+                    budgetItem.getCategory(category);
+                    budgetItem.getDescription(description);
+                    budgetItem.getAmount(amount);
+
+                }
+            });
         }
 
 

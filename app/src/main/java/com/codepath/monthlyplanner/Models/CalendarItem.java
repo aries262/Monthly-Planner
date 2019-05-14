@@ -11,6 +11,9 @@ public class CalendarItem extends RealmObject {
     public String location;
     public String reminder;
 
+    public CalendarItem() {
+    }
+
     public CalendarItem(String event, String description, String time, String location, String reminder){
         this.event = event;
         this.description = description;
