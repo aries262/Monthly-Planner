@@ -33,6 +33,8 @@ App to organize budget, plan events, and set goals.
 - [X] User can select day on Calendar to see schedule
 - [X] User can see a list of income and expenses with amount of money remaining
 - [X] App sends data to Realm Database
+- [X] App can recieve data from database
+
 
 **Optional Nice-to-have Stories**
 
