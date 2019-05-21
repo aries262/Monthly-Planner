@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
+import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
 
 
@@ -37,22 +38,50 @@ public class BudgetActivity extends AppCompatActivity {
     private TextView tvAmount;
     ArrayList<BudgetItem> arrayOfIncome, arrayOfExpenses;
     ArrayList<String> items;
-    BudgetAdapter adapterIncome, adapterExpense;
+    BudgetAdapter adapterIncome, adapterExpense, realmAdapter;
     ListView lvIncome, lvExpenses;
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         Log.d("hi", "Worked");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_budget);
 
 
         myRealm = Realm.getDefaultInstance();
-//        RealmResults<BudgetItem> budgetList = myRealm.where(BudgetItem.class).findAll();
-//        StringBuilder builder = new StringBuilder();
+        final RealmResults<BudgetItem> budgetList = myRealm.where(BudgetItem.class).findAll();
+        budgetList.addChangeListener(new RealmChangeListener<RealmResults<BudgetItem>>() {
+            @Override
+            public void onChange(RealmResults<BudgetItem> elements) {
+                for (BudgetItem item: budgetList){
+
+
 //
-//        for (BudgetItem item: budgetList){
-//            builder.append("Description: ").append(item.getDescription());
+
+
+
+                }
+            }
+        });
+
+//        public void displayAllUsers() {
+//
+//            RealmResults<BudgetItem> itemList = myRealm.where(BudgetItem.class).findAll();
+//
+//            StringBuilder builder = new StringBuilder();
+//
+//            for (BudgetItem item : itemList) {
+//                builder.append("ID: ").append(item.getDescription());
+//                builder.append("\nName: ").append(item.getAmount());
+//                builder.append(", Age: ").append(item.getCategory());
+//
+//
+//            }
+//
+//
 //        }
+
+
 
 
 
@@ -86,7 +115,6 @@ public class BudgetActivity extends AppCompatActivity {
             }
 
         });
-
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -131,10 +159,13 @@ public class BudgetActivity extends AppCompatActivity {
 
                 }
             });
+            myRealm.close();
+
         }
 
 
     }
+
 
 
 }

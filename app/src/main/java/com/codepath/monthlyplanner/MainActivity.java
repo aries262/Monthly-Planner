@@ -18,12 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Set up Realm Database
-        Realm.init(this);
-        RealmConfiguration configuration = new RealmConfiguration.Builder()
-                .name("Monthly-Planner")
-                .build();
-        Realm.setDefaultConfiguration(configuration);
+
 
         goTo = findViewById(R.id.goTo);
         calendar = findViewById(R.id.goToCalendar);

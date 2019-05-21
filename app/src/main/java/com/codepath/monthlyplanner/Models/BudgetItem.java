@@ -10,7 +10,7 @@ public class BudgetItem extends RealmObject {
     public String description;
     public Double amount;
 
-    public BudgetItem() {
+    public BudgetItem(){
     }
 
     public BudgetItem(String category, String description, Double amount) {
