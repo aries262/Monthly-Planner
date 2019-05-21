@@ -88,5 +88,8 @@ App to organize budget, plan events, and set goals.
 ## Update 2
 <img src='walkthrough2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
+## Update 3
+<img src='walkthrough3.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
